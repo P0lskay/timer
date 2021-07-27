@@ -2,6 +2,14 @@ let timerInput = document.getElementById("time");
 let buttonStart = document.getElementById("button");
 let timerShow  = document.getElementById("timer");
 
+console.log(this)
+
+function zeroShow(digit){
+    if (digit < 10){
+        return ('0'+digit);
+    }
+    return (digit);
+}
 
 buttonStart.addEventListener("click", function(){
     timeMinut = parseInt(timerInput.value) * 60;
@@ -16,7 +24,7 @@ timer = setInterval(function(){
         clearInterval(timer);
         alert("Time is up");
     }else{
-        let strTimer = `${Math.trunc(hour)}:${Math.trunc(minuts)}:${seconds}`;
+        let strTimer = `${zeroShow(Math.trunc(hour))}:${zeroShow(Math.trunc(minuts))}:${zeroShow(seconds)}`;
         timerShow .innerHTML = strTimer;
     }
     --timeMinut;
